@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import  ImageDataGenerator
 from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.layers import Dense, Flatten, Conv2D, MaxPool2D, Activation
+from tensorflow.keras.layers import *
 from tensorflow.keras import  Sequential
 import zipfile
 import os
