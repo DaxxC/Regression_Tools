@@ -195,6 +195,15 @@ def plot_loss_curves(history):
   plt.xlabel('Epochs')
   plt.legend()
 
+def unzip_data(pathname):
+  """
+  Unzips a .zip file
+  """
+  
+  zip_ref=zipfile.ZipFile(pathname)
+  zip_ref.extractall()
+  zip_ref.close()
+  
 def walk_through_dir(directory):
   for dirpath, dirnames, filenames in os.walk(directory):
     print(f'There are {len(dirnames)} directories and {len(filenames)} images in "{dirpath}" .')
