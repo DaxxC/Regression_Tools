@@ -129,7 +129,7 @@ def return_mae_mse(y_test=y_test, y_pred=y_pred):
   print(f'MSE: {mse}')
   return(mae,mse)
 
-def normalize(tensor)
+def normalize(tensor):
   import numpy as np
   a=tensor
   b=np.linalg.norm(a)
