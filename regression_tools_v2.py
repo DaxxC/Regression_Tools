@@ -14,7 +14,7 @@ def load_and_prep_image(filename, img_shape=[224,224]):
 
   return img
 
-def pred_and_plot_binary(model, filename,img_shape=[224,224], class_names= class_names):
+def pred_and_plot_binary(model, filename,img_shape=[224,224], class_names):
   """
   Imports an imaged located at filename, makes a prediction with model and plots
   the image with the predicted class as the title. Need to import Tensorflow, 
@@ -30,7 +30,7 @@ def pred_and_plot_binary(model, filename,img_shape=[224,224], class_names= class
   plt.title(f'Prediction: {pred_class}')
   plt.axis(False);
 
-def pred_and_plot_multiclass(model, filename,img_shape=[224,224], class_names= class_names):
+def pred_and_plot_multiclass(model, filename,img_shape=[224,224], class_names):
   """
   Imports an imaged located at filename, makes a prediction with model and plots
   the image with the predicted class as the title. Need to import Tensorflow, 
