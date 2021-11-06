@@ -14,7 +14,7 @@ def load_and_prep_image(filename, img_shape=[224,224]):
 
   return img
 
-def pred_and_plot_binary(model, filename,img_shape=[224,224], class_names):
+def pred_and_plot_binary(model, filename,class_names, img_shape=[224,224] ):
   """
   Imports an imaged located at filename, makes a prediction with model and plots
   the image with the predicted class as the title. Need to import Tensorflow, 
@@ -30,7 +30,7 @@ def pred_and_plot_binary(model, filename,img_shape=[224,224], class_names):
   plt.title(f'Prediction: {pred_class}')
   plt.axis(False);
 
-def pred_and_plot_multiclass(model, filename,img_shape=[224,224], class_names):
+def pred_and_plot_multiclass(model, filename,class_names, img_shape=[224,224] ):
   """
   Imports an imaged located at filename, makes a prediction with model and plots
   the image with the predicted class as the title. Need to import Tensorflow, 
@@ -122,7 +122,7 @@ def plot_random_image(model, images, true_labels, classes):
              color=color) # set the color to green or red based on if prediction is right or wrong
 
 
-def return_mae_mse(y_test=y_test, y_pred=y_pred):
+def return_mae_mse(y_test, y_pred):
   mae=tf.metrics.mean_absolute_error(y_test,y_pred.squeeze())
   mse=tf.metrics.mean_squared_error(y_test,y_pred.squeeze())
   print(f'MAE: {mae}')
