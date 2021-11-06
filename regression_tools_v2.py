@@ -1,3 +1,16 @@
+import tensorflow as tf
+from tensorflow.keras.preprocessing.image import  ImageDataGenerator
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.layers import Dense, Flatten, Conv2D, MaxPool2D, Activation
+from tensorflow.keras import  Sequential
+import zipfile
+import os
+import random
+import pathlib
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
 def load_and_prep_image(filename, img_shape=[224,224]):
   """
   Reads an image from filename, turns it into a tensor and turns into
