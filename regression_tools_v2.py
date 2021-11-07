@@ -10,6 +10,7 @@ import pathlib
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
+import datetime
 
 def load_and_prep_image(filename, img_shape=[224,224]):
   """
