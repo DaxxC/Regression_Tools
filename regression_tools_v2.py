@@ -12,6 +12,31 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import datetime
 
+def compare_histories_fine_tuninn_model(original_history, new_history, initial_epochs=5):
+  """
+  Compares two Tensorflow History objects, especially when fine-tuning a model.
+
+  """
+  acc= original_history.history['accuracy']
+  loss=original_history.history['loss']
+
+  val_acc= original_history.history['val_accuracy']
+  val_loss=original_history.history['val_loss']
+
+  total_acc= acc+ new_history.history['accuracy']
+  total_loss= loss+ new_history.history['loss']
+
+  total_val_acc= val_acc+ new_history.history['val_accuracy']
+  total_val_loss= val_loss+ new_history.history['val_loss']
+
+  plt.figure(figsize=(8,8))
+  plt.subplot(2,1,1)
+  plt.plot(total_acc,label= 'Training Accuracy')
+  plt.plot(total_val_acc, label='Val Accuracy')
+  plt.plot([initial_epochs-1, initial_epochs-1], plt.ylim(), label= 'Start Fine Tuning' )
+  plt.legend(loc='lower right')
+  plt.title('Train and Validation Accuracy')
+
 def load_and_prep_image(filename, img_shape=[224,224]):
   """
   Reads an image from filename, turns it into a tensor and turns into
