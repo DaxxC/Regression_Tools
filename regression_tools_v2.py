@@ -14,7 +14,7 @@ import datetime
 
 def compare_histories_fine_tuned_model(original_history, new_history, initial_epochs=5):
   """
-  Compares two Tensorflow History objects, especially when fine-tuning a model.
+  Compares two Tensorflow History objects, especially when fine-tuning a model. Metrics must be accuracy.
 
   """
   acc= original_history.history['accuracy']
