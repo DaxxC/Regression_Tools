@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import datetime
 
-def compare_histories_fine_tuninn_model(original_history, new_history, initial_epochs=5):
+def compare_histories_fine_tuned_model(original_history, new_history, initial_epochs=5):
   """
   Compares two Tensorflow History objects, especially when fine-tuning a model.
 
@@ -35,7 +35,15 @@ def compare_histories_fine_tuninn_model(original_history, new_history, initial_e
   plt.plot(total_val_acc, label='Val Accuracy')
   plt.plot([initial_epochs-1, initial_epochs-1], plt.ylim(), label= 'Start Fine Tuning' )
   plt.legend(loc='lower right')
-  plt.title('Train and Validation Accuracy')
+  plt.title('Train and Validation Accuracy');
+
+  plt.figure(figsize=(8,8))
+  plt.subplot(2,1,2)
+  plt.plot(total_loss, label= 'Training Loss')
+  plt.plot(total_val_loss, label='Val Loss')
+  plt.plot([initial_epochs-1, initial_epochs-1], plt.ylim(), label= 'Start Fine Tuning' )
+  plt.legend(loc='upper right')
+  plt.title('Train and Validation Loss');
 
 def load_and_prep_image(filename, img_shape=[224,224]):
   """
