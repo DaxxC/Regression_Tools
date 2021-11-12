@@ -124,6 +124,9 @@ def confusion_matrix_classifier(y_true, y_pred, classes= None, figsize= (10,10),
 
   ax.xaxis.set_label_position('bottom')
   ax.xaxis.tick_bottom()
+  
+  plt.xticks(rotation=70, fontsize=text_size)
+  plt.yticks(fontsize= text_size)
 
   ax.yaxis.label.set_size(text_size)
   ax.xaxis.label.set_size(text_size)
