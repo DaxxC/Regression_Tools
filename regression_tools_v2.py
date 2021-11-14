@@ -45,7 +45,7 @@ def compare_histories_fine_tuned_model(original_history, new_history, initial_ep
   plt.legend(loc='upper right')
   plt.title('Train and Validation Loss');
 
-def load_and_prep_image(filename, img_shape=[224,224]):
+def load_and_prep_image(filename, img_shape=[224,224], scale= True):
   """
   Reads an image from filename, turns it into a tensor and turns into
   img shape, img shape, color dim"""
@@ -57,16 +57,17 @@ def load_and_prep_image(filename, img_shape=[224,224]):
 
   img= tf.image.resize(img, img_shape)
 
-  img=img /255.
+  if scale:
+    img=img /255.
 
   return img
 
-def pred_and_plot_binary(model, filename,class_names, img_shape=[224,224] ):
+def pred_and_plot_binary(model, filename,img_shape=[224,224], class_names= class_names, scale= True):
   """
   Imports an imaged located at filename, makes a prediction with model and plots
   the image with the predicted class as the title. Need to import Tensorflow, 
   matplotlib.image as mpimg """
-  img= load_and_prep_image(filename)
+  img= load_and_prep_image(filename, img_shape, scale)
 
   pred= model.predict(tf.expand_dims(img, axis=0))
   print('pred:', pred)
@@ -77,12 +78,12 @@ def pred_and_plot_binary(model, filename,class_names, img_shape=[224,224] ):
   plt.title(f'Prediction: {pred_class}')
   plt.axis(False);
 
-def pred_and_plot_multiclass(model, filename,class_names, img_shape=[224,224] ):
+def pred_and_plot_multiclass(model, filename,img_shape=[224,224], class_names= class_names, scale=True):
   """
   Imports an imaged located at filename, makes a prediction with model and plots
   the image with the predicted class as the title. Need to import Tensorflow, 
   matplotlib.image as mpimg """
-  img= load_and_prep_image(filename)
+  img= load_and_prep_image(filename, img_shape, scale)
 
   pred= model.predict(tf.expand_dims(img, axis=0))
   pred=pred.squeeze()
