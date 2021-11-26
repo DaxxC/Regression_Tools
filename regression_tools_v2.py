@@ -255,7 +255,7 @@ def unzip_data(pathname):
   zip_ref.extractall()
   zip_ref.close()
   
-def preprocess_img_dtype_resize_rescale(image, label, datatype,  img_shape=224, scale=False):
+def preprocess_img_dtype_resize_rescale(image, label, datatype=tf.float32,  img_shape=224, scale=False):
   """
   Converts image datatype to dytpe and reshapes image to 
   [img_shape, img_shape, color_channels]
