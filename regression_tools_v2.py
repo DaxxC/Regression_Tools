@@ -12,6 +12,20 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import datetime
 
+def model_checkpoint_callback(checkpoint_path, monitor='val_acc', save_best=True, weights=True):
+  """
+  Takes a path object to save the model to a folder. The monitor can be problem dependent,
+  but is validation accuracy bu default. Will save the best validation accuracy by default. Will save only
+  the model's weights instea of the entire model by default.
+  """
+  
+  model_checkpoint=tf.keras.callbacks.ModelCheckpoint(checkpoint_path, 
+                                                      monitor=monitor,
+                                                      save_best_only=True,
+                                                      weights_only=weights,
+                                                      verbose=0)
+  return model_checkpoint
+
 def compare_histories_fine_tuned_model(original_history, new_history, initial_epochs=5):
   """
   Compares two Tensorflow History objects, especially when fine-tuning a model. Metrics must be accuracy.
