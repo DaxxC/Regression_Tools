@@ -255,6 +255,20 @@ def unzip_data(pathname):
   zip_ref.extractall()
   zip_ref.close()
   
+def preprocess_img_dtype_resize_rescale(image, label, datatype,  img_shape=224, scale=False):
+  """
+  Converts image datatype to dytpe and reshapes image to 
+  [img_shape, img_shape, color_channels]
+
+  Needs tensorflow imported.
+  """
+  image=tf.image.resize(image, [img_shape,img_shape])
+  if scale:
+    image=image/255.
+    return tf.cast(image, datatype), label
+  else:
+    return tf.cast(image, datatype), label 
+  
 def walk_through_dir(directory):
   for dirpath, dirnames, filenames in os.walk(directory):
     print(f'There are {len(dirnames)} directories and {len(filenames)} images in "{dirpath}" .')
