@@ -12,6 +12,23 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import datetime
 
+def model_early_stopping_callback(metric='val_loss', delta=0,patience=0, best_weights=False):
+  """
+  Returns a Tensorflow callback for early stopping of a model in training. Metric is the
+  monitored value to cause the model to stop training. It is val_loss by default. Delta is how 
+  much the metric much it must change by before it stops. Pateince is the number of epochs it must 
+  must not have met the threshold by. Best weights is whether or not the best weights will e restored.
+  """
+  
+  return tf.keras.callbacks.EarlyStopping(
+      monitor= metric,
+      min_delta=delta ,
+      patience=0,
+      verbose=0,
+      mode='auto',
+      restore_best_weights=best_weights
+  )
+
 def model_checkpoint_callback(checkpoint_path, monitor='val_acc', save_best=True, weights=True):
   """
   Takes a path object to save the model to a folder. The monitor can be problem dependent,
