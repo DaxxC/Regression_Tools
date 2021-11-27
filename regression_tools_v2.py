@@ -29,7 +29,7 @@ def model_early_stopping_callback(metric='val_loss', delta=0,patience=0, best_we
       restore_best_weights=best_weights
   )
 
-def model_checkpoint_callback(checkpoint_path, monitor='val_acc', save_best=True, weights=True):
+def model_checkpoint_callback(checkpoint_path, monitor='val_accuracy', save_best=True, weights=True):
   """
   Takes a path object to save the model to a folder. The monitor can be problem dependent,
   but is validation accuracy bu default. Will save the best validation accuracy by default. Will save only
