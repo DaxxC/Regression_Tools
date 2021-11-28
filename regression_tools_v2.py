@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import datetime
 
-def model_early_stopping_callback(metric='val_loss', delta=0,patience=0, best_weights=False):
+def model_early_stopping_callback(metric='val_loss', delta=0, impatience=0, verbosity= 0, best_weights=False):
   """
   Returns a Tensorflow callback for early stopping of a model in training. Metric is the
   monitored value to cause the model to stop training. It is val_loss by default. Delta is how 
@@ -23,13 +23,13 @@ def model_early_stopping_callback(metric='val_loss', delta=0,patience=0, best_we
   return tf.keras.callbacks.EarlyStopping(
       monitor= metric,
       min_delta=delta ,
-      patience=0,
-      verbose=0,
+      patience=impatience,
+      verbose=verbosity,
       mode='auto',
       restore_best_weights=best_weights
   )
 
-def model_checkpoint_callback(checkpoint_path, monitor='val_accuracy', save_best=True, weights=True):
+def model_checkpoint_callback(checkpoint_path, monitor='val_accuracy', verbosity= 0, save_best=True, weights=True):
   """
   Takes a path object to save the model to a folder. The monitor can be problem dependent,
   but is validation accuracy bu default. Will save the best validation accuracy by default. Will save only
@@ -38,9 +38,9 @@ def model_checkpoint_callback(checkpoint_path, monitor='val_accuracy', save_best
   
   model_checkpoint=tf.keras.callbacks.ModelCheckpoint(checkpoint_path, 
                                                       monitor=monitor,
-                                                      save_best_only=True,
+                                                      save_best_only=save_best,
                                                       weights_only=weights,
-                                                      verbose=0)
+                                                      verbose=verbosity)
   return model_checkpoint
 
 def compare_histories_fine_tuned_model(original_history, new_history, initial_epochs=5):
