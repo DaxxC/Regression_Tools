@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import datetime
 import sklearn
-from sklearn import accuracy_score, precision_recall_fscore_support
+from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 
 def model_early_stopping_callback(metric='val_loss', delta=0, impatience=0, verbosity= 0, best_weights=False):
   """
