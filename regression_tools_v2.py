@@ -13,6 +13,18 @@ import matplotlib.image as mpimg
 import datetime
 import sklearn
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
+import time
+
+def prediction_timer(model, samples):
+  """
+  Timeshow long a model takes to make predictions on samples.
+  """
+  start_time=time.perf_counter()
+  model.predict(samples)
+  end_time=time.perf_counter()
+  total_time=end_time-start_time
+  time_per_pred= total_time/len(samples)
+  return total_time, time_per_pred
 
 def binary_metrics_results(y_true, y_pred):
   """
