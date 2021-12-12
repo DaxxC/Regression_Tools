@@ -1,3 +1,6 @@
+def split_chars(text):
+  return " ".join(list(text))
+
 def get_lines(filename):
   """
   Reads text filename and returns the lines of text as a list.
